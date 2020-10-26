@@ -73,3 +73,8 @@ hammer.on("swiperight",function(e){
 	indicator_num += page_vector;
 	change_page(indicator_num);
 });
+
+
+window.onresize = function(){
+	init_page();
+}
