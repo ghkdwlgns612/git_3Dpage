@@ -7,7 +7,10 @@ let yDeg=0,
     indicator_num=1,
     indicator_length = page.length,
     w = page[0].offsetWidth,
-    page_angle= 0;
+	page_angle= 0,
+	page_vector =0;
+	
+let hammer = new Hammer(wrapper);
 
 function init_page(){
     w = page[0].offsetWidth;
@@ -53,3 +56,20 @@ for(var i = 0; i < indicator_li.length; i++){
 }
 
 
+hammer.on("swipeleft",function(e){
+	if(indicator_num<indicator_length){
+		page_vector=1;
+	} else page_vector =0;
+
+	indicator_num += page_vector;
+	change_page(indicator_num);
+});
+
+hammer.on("swiperight",function(e){
+	if(indicator_num>1){
+		page_vector=-1;
+	} else page_vector =0;
+
+	indicator_num += page_vector;
+	change_page(indicator_num);
+});
